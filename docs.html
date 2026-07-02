@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PounceSQL — Documentation</title>
+<meta name="description" content="PounceSQL documentation: install, connect to Azure SQL / SQL Server / PostgreSQL / SQLite, AI assistant, MCP server, themes and fonts." />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html"><span class="brand-pounce">Pounce</span><span class="brand-sql">SQL</span></a>
+    <nav class="nav-links">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#download">Download</a>
+      <a href="docs.html" class="active">Docs</a>
+      <a href="https://github.com/senzalldev/pouncesql-app" class="nav-gh">GitHub ↗</a>
+    </nav>
+  </div>
+</header>
+
+<div class="docs-wrap wrap">
+  <aside class="docs-side">
+    <nav>
+      <a href="#install">Install</a>
+      <a href="#first-run">First run</a>
+      <a href="#azure">Azure SQL</a>
+      <a href="#sqlserver">SQL Server</a>
+      <a href="#postgres">PostgreSQL</a>
+      <a href="#sqlite">SQLite</a>
+      <a href="#browsing">Browsing &amp; queries</a>
+      <a href="#ai">AI assistant</a>
+      <a href="#gateway">AI API gateway</a>
+      <a href="#mcp">MCP server</a>
+      <a href="#appearance">Themes &amp; fonts</a>
+      <a href="#security">Security</a>
+    </nav>
+  </aside>
+
+  <main class="docs-main">
+    <h1>Documentation</h1>
+    <p class="docs-lede">PounceSQL is a native macOS SQL client for Azure SQL, SQL Server,
+      PostgreSQL, and SQLite, with an AI assistant and a built-in MCP server.</p>
+
+    <section id="install">
+      <h2>Install</h2>
+      <p><b>Homebrew (recommended):</b></p>
+      <pre><code>brew install --cask senzalldev/tap/pouncesql</code></pre>
+      <p>Upgrade later with <code>brew upgrade --cask pouncesql</code>.</p>
+      <p><b>Direct download:</b> grab the latest <code>.dmg</code> from the
+        <a href="https://github.com/senzalldev/pouncesql-app/releases/latest">releases page</a>,
+        open it, and drag PounceSQL into Applications. The app is Developer-ID
+        signed and notarized, so it opens without a Gatekeeper prompt.</p>
+      <p>Requirements: macOS 13+ (Apple Silicon).</p>
+    </section>
+
+    <section id="first-run">
+      <h2>First run</h2>
+      <p>Launch PounceSQL and click <b>+ Add</b> in the left panel to connect your
+        first database. The <b>Add connection</b> wizard has a tab for each engine —
+        pick the one you need. Once connected, databases appear in the tree on the
+        left; expand them to browse schemas, tables, and columns.</p>
+    </section>
+
+    <section id="azure">
+      <h2>Azure SQL</h2>
+      <p>Azure SQL uses your Azure CLI session — no passwords are stored.</p>
+      <ol>
+        <li>Install the CLI: <code>brew install azure-cli</code></li>
+        <li>Sign in: <code>az login</code> (or click the account chip in the title bar).</li>
+        <li>In the wizard's <b>Azure SQL</b> tab, browse your subscriptions → servers →
+          databases and pick one to pin.</li>
+      </ol>
+    </section>
+
+    <section id="sqlserver">
+      <h2>SQL Server (2017–2025+)</h2>
+      <p>Connect to local or domain-joined SQL Server. In the wizard's
+        <b>SQL Server</b> tab, enter the server (<code>host</code>,
+        <code>host:1433</code>, or <code>host\instance</code>) and choose an
+        authentication mode:</p>
+      <ul>
+        <li><b>SQL Server login</b> — username + password.</li>
+        <li><b>Windows / domain (NTLM)</b> — <code>DOMAIN\user</code> + password.
+          Works from a Mac that isn't domain-joined.</li>
+        <li><b>Kerberos (SSO — no password)</b> — click <b>Get Kerberos ticket</b>
+          to run <code>kinit</code>; your password is entered at the OS prompt and
+          never stored in PounceSQL. Requires an <code>MSSQLSvc</code> SPN registered
+          for the server.</li>
+      </ul>
+      <p>Pin the whole server to browse every database it hosts, or add a single
+        database directly.</p>
+    </section>
+
+    <section id="postgres">
+      <h2>PostgreSQL</h2>
+      <p>In the <b>PostgreSQL</b> tab, enter the server (<code>host</code> or
+        <code>host:5432</code>), your role, and password, then pick an SSL mode
+        (Prefer / Require / Disable). Click <b>Connect &amp; List Databases</b> to
+        pin the whole server (browse every database) or add one database directly.</p>
+    </section>
+
+    <section id="sqlite">
+      <h2>SQLite</h2>
+      <p>In the <b>SQLite</b> tab, click <b>Browse…</b> and pick a
+        <code>.db</code> / <code>.sqlite</code> file. No server or login is needed —
+        PounceSQL opens the file and lists its tables.</p>
+    </section>
+
+    <section id="browsing">
+      <h2>Browsing &amp; queries</h2>
+      <ul>
+        <li><b>Expand</b> a database to see tables and views; expand a table to see
+          its columns (primary keys and nullability marked).</li>
+        <li><b>Double-click</b> a table to preview its rows.</li>
+        <li><b>Right-click</b> a table for actions — Select Top N, Row Count,
+          Describe Schema, List Columns, Show Indexes — each generated in the correct
+          dialect for the engine (LIMIT vs TOP, etc.).</li>
+        <li><b>Filter</b> box searches databases and tables, including databases
+          nested under a server.</li>
+        <li>Run queries with <b>F5</b> or <b>⌘↵</b>. Results appear in the grid below;
+          multiple query tabs are supported.</li>
+      </ul>
+    </section>
+
+    <section id="ai">
+      <h2>AI assistant</h2>
+      <p>Open the AI panel (the robot icon by Run, or the panel on the right) and ask
+        in plain English. The assistant is grounded in the schema you're connected to
+        and writes SQL in the correct dialect for the engine. Configure a provider in
+        <b>Settings → AI Provider</b> — bring your own API key (Anthropic, OpenAI,
+        Google, Azure OpenAI) or use an AI API gateway.</p>
+    </section>
+
+    <section id="gateway">
+      <h2>AI API gateway</h2>
+      <p>If your organization fronts LLM access with an OAuth2 gateway, go to
+        <b>Settings → AI API GW</b>, paste (or import) the credentials JSON, and click
+        <b>Test Gateway &amp; Discover Models</b> to verify and list available models.
+        Secrets are stored only in the encrypted local settings file.</p>
+    </section>
+
+    <section id="mcp">
+      <h2>MCP server</h2>
+      <p>PounceSQL runs a local Model Context Protocol server so agents like Claude
+        Code can drive it. In <b>Settings → MCP Server</b> you'll find the SSE endpoint
+        (<code>http://127.0.0.1:7457/sse</code>) and a one-line command to add it:</p>
+      <pre><code>claude mcp add --transport sse pouncesql http://127.0.0.1:7457/sse</code></pre>
+      <p>Agents can then list databases, run queries, browse schema, and read logs —
+        and you watch the actions happen live in the app. Writes are blocked unless you
+        enable them in <b>Settings → Tools</b>.</p>
+    </section>
+
+    <section id="appearance">
+      <h2>Themes &amp; fonts</h2>
+      <p><b>Settings → Themes</b> offers a dozen editor themes (One Dark, Dracula,
+        Monokai, Nord, Tokyo Night, Light, and more). <b>Settings → Fonts</b> lets you
+        choose separate fonts for the interface and the editor, and set independent
+        sizes for the editor, the tree/lists, the results grid, and the UI. Quick
+        <b>A−&nbsp;/&nbsp;A+</b> buttons in the tree header adjust the list size on the fly.</p>
+    </section>
+
+    <section id="security">
+      <h2>Security</h2>
+      <ul>
+        <li>All connection secrets are stored only in an encrypted local settings file
+          (AES-256-GCM); the key lives in your login keychain.</li>
+        <li>The AI assistant and MCP server are <b>read-only by default</b> — writes
+          (INSERT/UPDATE/DELETE/DDL) require explicitly enabling them in
+          <b>Settings → Tools</b>.</li>
+        <li>Azure SQL uses your <code>az login</code> session; Kerberos uses a ticket —
+          neither stores a password.</li>
+      </ul>
+    </section>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="wrap foot-inner">
+    <span><span class="brand-pounce">Pounce</span><span class="brand-sql">SQL</span> — a native macOS SQL client.</span>
+    <a href="https://github.com/senzalldev/pouncesql-app">github.com/senzalldev/pouncesql-app</a>
+  </div>
+</footer>
+
+</body>
+</html>

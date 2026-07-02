@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PounceSQL — a fast, native SQL client for macOS</title>
+<meta name="description" content="PounceSQL is a retro-styled native macOS SQL client for Azure SQL, SQL Server, PostgreSQL, and SQLite — with an AI assistant and a built-in MCP server." />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top"><span class="brand-pounce">Pounce</span><span class="brand-sql">SQL</span></a>
+    <nav class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#engines">Databases</a>
+      <a href="#shots">Screenshots</a>
+      <a href="#download">Download</a>
+      <a href="docs.html">Docs</a>
+      <a href="https://github.com/senzalldev/pouncesql-app" class="nav-gh">GitHub ↗</a>
+    </nav>
+  </div>
+</header>
+
+<section id="top" class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <h1>The SQL client that <span class="accent">pounces</span> on your data.</h1>
+      <p class="lede">A fast, native macOS client for <b>Azure SQL</b>, <b>SQL Server</b>,
+        <b>PostgreSQL</b>, and <b>SQLite</b> — with a built-in AI assistant, an
+        embedded MCP server, and a retro terminal look you'll actually enjoy.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#download">Download for macOS</a>
+        <a class="btn btn-ghost" href="#features">See the features</a>
+      </div>
+      <div class="brew">
+        <code>brew install --cask senzalldev/tap/pouncesql</code>
+      </div>
+    </div>
+    <div class="hero-shot">
+      <img src="screenshots/01-hero.png" alt="PounceSQL main window" onerror="this.classList.add('ph')" />
+    </div>
+  </div>
+</section>
+
+<section id="engines" class="engines">
+  <div class="wrap">
+    <h2>One client. Every database you use.</h2>
+    <div class="engine-grid">
+      <div class="engine-card"><h3>Azure SQL</h3><p>Browse subscriptions, servers, and databases with your <code>az login</code> session — no passwords stored.</p></div>
+      <div class="engine-card"><h3>SQL Server</h3><p>2017 – 2025+, local or domain-joined. SQL login, Windows/NTLM, or passwordless <b>Kerberos SSO</b>.</p></div>
+      <div class="engine-card"><h3>PostgreSQL</h3><p>Connect over LAN, VPN, or Tailscale. Pin a whole server and browse every database it hosts.</p></div>
+      <div class="engine-card"><h3>SQLite</h3><p>Open any <code>.db</code> file — no server, no login. Just pick the file and start querying.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="features" class="features">
+  <div class="wrap">
+    <h2>Built for people who live in SQL.</h2>
+
+    <div class="feature-row">
+      <div class="feature-text">
+        <h3>Browse the whole server</h3>
+        <p>Pin a server and expand it like a tree — every database, every schema,
+           every table and column. Filter across databases instantly.
+           Right-click a table to preview, count, or generate a query.</p>
+      </div>
+      <div class="feature-img"><img src="screenshots/02-tree.png" alt="Database tree" onerror="this.classList.add('ph')" /></div>
+    </div>
+
+    <div class="feature-row reverse">
+      <div class="feature-text">
+        <h3>Ask your data in plain English</h3>
+        <p>The built-in AI assistant writes and explains T-SQL and Postgres for you,
+           grounded in the schema you're connected to. Bring your own API key or
+           route through an enterprise AI gateway.</p>
+      </div>
+      <div class="feature-img"><img src="screenshots/03-ai.png" alt="AI assistant" onerror="this.classList.add('ph')" /></div>
+    </div>
+
+    <div class="feature-row">
+      <div class="feature-text">
+        <h3>An MCP server, built in</h3>
+        <p>PounceSQL runs a local Model Context Protocol server, so Claude Code and
+           other agents can drive it — list databases, run queries, read results —
+           and you watch it happen live in the app.</p>
+      </div>
+      <div class="feature-img"><img src="screenshots/04-mcp.png" alt="MCP server" onerror="this.classList.add('ph')" /></div>
+    </div>
+
+    <div class="feature-row reverse">
+      <div class="feature-text">
+        <h3>Make it yours</h3>
+        <p>A dozen editor themes, separate fonts for the interface and the editor,
+           and independent size control for the editor, tree, results grid, and UI.
+           Tune it until it feels right.</p>
+      </div>
+      <div class="feature-img"><img src="screenshots/05-themes.png" alt="Themes and fonts" onerror="this.classList.add('ph')" /></div>
+    </div>
+  </div>
+</section>
+
+<section id="shots" class="shots">
+  <div class="wrap">
+    <h2>Screenshots</h2>
+    <div class="shot-grid">
+      <figure><img src="screenshots/06-query.png"   alt="Query editor & results" onerror="this.classList.add('ph')"><figcaption>Query editor &amp; results</figcaption></figure>
+      <figure><img src="screenshots/07-sqlite.png"  alt="SQLite browsing"        onerror="this.classList.add('ph')"><figcaption>Browsing a SQLite view</figcaption></figure>
+      <figure><img src="screenshots/08-wizard.png"  alt="Add-connection wizard"  onerror="this.classList.add('ph')"><figcaption>Four-engine add wizard</figcaption></figure>
+      <figure><img src="screenshots/09-settings.png" alt="AI API gateway settings" onerror="this.classList.add('ph')"><figcaption>AI gateway configuration</figcaption></figure>
+      <figure><img src="screenshots/10-tools.png"   alt="Tools & safety"         onerror="this.classList.add('ph')"><figcaption>Tools &amp; safety controls</figcaption></figure>
+      <figure><img src="screenshots/04-mcp.png"     alt="MCP server"             onerror="this.classList.add('ph')"><figcaption>Built-in MCP server</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="download" class="download">
+  <div class="wrap dl-inner">
+    <h2>Download PounceSQL</h2>
+    <p class="dl-sub">Free, native, and notarized for macOS 13+ (Apple Silicon).</p>
+    <div class="dl-cards">
+      <div class="dl-card">
+        <h3>Homebrew</h3>
+        <code>brew install --cask senzalldev/tap/pouncesql</code>
+        <p>Recommended — auto-updates with <code>brew upgrade</code>.</p>
+      </div>
+      <div class="dl-card">
+        <h3>Direct download</h3>
+        <a class="btn btn-primary" href="https://github.com/senzalldev/pouncesql-app/releases/latest">Latest release (.dmg)</a>
+        <p>Open the DMG and drag PounceSQL to Applications.</p>
+      </div>
+    </div>
+    <p class="dl-note">Requires the Azure CLI for Azure SQL (<code>brew install azure-cli</code>, then <code>az login</code>).</p>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap foot-inner">
+    <span><span class="brand-pounce">Pounce</span><span class="brand-sql">SQL</span> — a native macOS SQL client.</span>
+    <a href="https://github.com/senzalldev/pouncesql-app">github.com/senzalldev/pouncesql-app</a>
+  </div>
+</footer>
+
+</body>
+</html>
