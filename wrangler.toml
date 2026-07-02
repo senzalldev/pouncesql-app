@@ -10,3 +10,13 @@ compatibility_date = "2025-01-01"
 [assets]
 directory = "."
 not_found_handling = "single-page-application"
+
+# Custom domains — wrangler creates the DNS records automatically since the
+# pouncesql.com zone is on Cloudflare.
+[[routes]]
+pattern = "pouncesql.com"
+custom_domain = true
+
+[[routes]]
+pattern = "www.pouncesql.com"
+custom_domain = true
